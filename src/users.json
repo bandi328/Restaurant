@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@example.ex",
+    "phone": "+36 123 4567",
+    "address": "1111 City, StreetName st. 11."
+  }
+]

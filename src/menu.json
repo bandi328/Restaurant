@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Super Cheesy Pizza",
+    "description": "A delicious pizza loaded with three kinds of cheese!",
+    "price": 7.99
+  },
+  {
+    "id": 2,
+    "name": "Yummy Burger",
+    "description": "A juicy beef burger with lettuce, tomato, and your choice of sauce.",
+    "price": 6.50
+  },
+  {
+    "id": 3,
+    "name": "Crispy Chicken Nuggets (6 pc)",
+    "description": "Six golden and crispy chicken nuggets, perfect for dipping!",
+    "price": 4.75
+  },
+  {
+    "id": 4,
+    "name": "Pasta Power!",
+    "description": "Spaghetti with a tasty tomato sauce and meatballs.",
+    "price": 8.25
+  },
+  {
+    "id": 5,
+    "name": "Fruity Salad Fun",
+    "description": "A refreshing salad with mixed greens and lots of yummy fruits.",
+    "price": 5.50
+  },
+  {
+    "id": 6,
+    "name": "Sweet Treat Sundae",
+    "description": "Vanilla ice cream with chocolate sauce, whipped cream, and a cherry on top!",
+    "price": 3.99
+  },
+  {
+    "id": 7,
+    "name": "Chocolate Chip Cookie",
+    "description": "A warm and gooey chocolate chip cookie.",
+    "price": 1.50
+  },
+  {
+    "id": 8,
+    "name": "Soda Pop",
+    "description": "Your choice of refreshing soda.",
+    "price": 2.00
+  },
+  {
+    "id": 9,
+    "name": "Juice Box",
+    "description": "A kid-friendly juice box (apple or orange).",
+    "price": 1.75
+  }
+]
