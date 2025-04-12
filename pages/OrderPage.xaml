@@ -9,6 +9,55 @@
       Title="OrderPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="5 0"/>
+                <Setter Property="Padding" Value="20 5"/>
+            </Style>
+        </Grid.Resources>
+        <GroupBox Header="User info" Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <ComboBox VerticalAlignment="Top" Margin="15"></ComboBox>
+                <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button x:Name="addUser_BTN" Content="Add new"/>
+                    <Button x:Name="modify_BTN" Content="Edit"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Cart" Grid.Column="1" Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <DataGrid Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding TeamsToShow}" SelectedItem="{Binding SelectedTeam}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="" Width="*" Binding="{Binding TeamName}"/>
+                        <DataGridTextColumn Header="Csapvez. e-mail" Width="*" Binding="{Binding TeamLeaderEmail}"/>
+                        <DataGridTextColumn Header="Csapvez. szül. dátum" Width="*" Binding="{Binding TeamLeaderBirthDate}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button Content="Add new"/>
+                    <Button Content="Edit"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button x:Name="order_BTN" Content="Confirm"/>
+            <Button x:Name="clear_BTN" Content="Cancel"/>
+        </StackPanel>
     </Grid>
 </Page>
