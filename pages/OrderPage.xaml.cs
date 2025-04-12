@@ -93,6 +93,8 @@ namespace Restaurant
             {
                 users.Add(dataWindow.User);
                 UsersToShow.Add(dataWindow.User);
+                string jsonStr = JsonSerializer.Serialize(users);
+                File.WriteAllText("./src./users.json", jsonStr);
             }
         }
 
@@ -104,6 +106,46 @@ namespace Restaurant
                 return;
             }
             NavigationService.Navigate(new DonePage());
+        }
+
+        private void modify_BTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedUser == null)
+            {
+                MessageBox.Show("Choose an user!", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            int index = users.IndexOf(users.FirstOrDefault(x => x.name == SelectedUser.name));
+            User tmpTeam = new User()
+            {
+                name = SelectedUser.name,
+                email = SelectedUser.email,
+                phone = SelectedUser.phone,
+                address = SelectedUser.address
+            };
+            DataWindow dataWindow = new DataWindow(tmpTeam, users);
+            dataWindow.ShowDialog();
+            if (dataWindow.DialogResult == true)
+            {
+                users[index] = dataWindow.User;
+                UsersToShow[index] = dataWindow.User;
+                string jsonStr = JsonSerializer.Serialize(users);
+                File.WriteAllText("./src./users.json", jsonStr);
+            }
+        }
+
+        private void deleteUser_BTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedUser == null)
+            {
+                MessageBox.Show("Choose an user!", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            int index = users.IndexOf(users.FirstOrDefault(x => x.name == SelectedUser.name));
+            users.RemoveAt(index);
+            UsersToShow.RemoveAt(index);
+            string jsonStr = JsonSerializer.Serialize(users);
+            File.WriteAllText("./src./users.json", jsonStr);
         }
     }
 }

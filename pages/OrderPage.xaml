@@ -31,7 +31,8 @@
                 <ComboBox VerticalAlignment="Top" Margin="10" ItemsSource="{Binding UsersToShow}" DisplayMemberPath="name" SelectedItem="{Binding SelectedUser}"></ComboBox>
                 <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Button x:Name="addUser_BTN" Content="Add new" RenderTransformOrigin="0.489,0.52" Click="addUser_BTN_Click"/>
-                    <Button x:Name="modify_BTN" Content="Edit"/>
+                    <Button x:Name="modify_BTN" Content="Edit" Click="modify_BTN_Click"/>
+                    <Button x:Name="deleteUser_BTN" Content="Delete" Click="deleteUser_BTN_Click"/>
                 </StackPanel>
             </Grid>
         </GroupBox>
@@ -44,7 +45,8 @@
                 <DataGrid AutoGenerateColumns="False" RowHeaderWidth="0" CanUserReorderColumns="False" CanUserResizeColumns="False" VerticalAlignment="Top" Margin="10" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding CartToShow}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Items" Width="3*" Binding="{Binding name}"/>
-                        <DataGridTextColumn Header="Count" Width="*" Binding="{Binding price}"/>
+                        <DataGridTextColumn Header="Price" Width="*" Binding="{Binding price}"/>
+                        <DataGridTextColumn Header="Count" Width="*" Binding="{Binding count}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
