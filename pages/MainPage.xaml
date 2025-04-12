@@ -21,38 +21,49 @@
         </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="Button">
-                <Setter Property="Margin" Value="5 0"/>
+                <Setter Property="Margin" Value="5"/>
                 <Setter Property="Padding" Value="20 5"/>
             </Style>
         </Grid.Resources>
         <Label Content="Menu" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Content="Cart" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2"/>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding MenuItems}" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" SelectionMode="Single">
+        <DataGrid Grid.Row="1" Padding="0" x:Name="menu_DG" RowHeaderWidth="0" ItemsSource="{Binding MenuItems}" IsReadOnly="True" SelectedItem="{Binding SelectedItem}" AutoGenerateColumns="False"  SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Width="*" Binding="{Binding name}" />
-                <DataGridTextColumn Header="Price" Width=".3*" Binding="{Binding price}"/>
+                <DataGridTextColumn Header="Price" Width=".3*" Binding="{Binding price, StringFormat=C, ConverterCulture='en-US'}"/>
             </DataGrid.Columns>
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="add_BTN_Click"/>
+                </Style>
+            </DataGrid.Resources>
         </DataGrid>
         <Grid Grid.Row="1" Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height=".1*"/>
             </Grid.RowDefinitions>
-            <DataGrid Grid.Row="0" ItemsSource="{}">
+            <DataGrid Grid.Row="0" IsReadOnly="True" AutoGenerateColumns="False" RowHeaderWidth="0" SelectedItem="{Binding SelectedCartItem}" CanUserReorderColumns="False" CanUserResizeColumns="False" SelectionMode="Single" ItemsSource="{Binding CartToShow}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Width="*"/>
-                    <DataGridTextColumn Header="Price" Width=".3*"/>
-                    <DataGridTextColumn Header="Count" Width=".3*"/>
+                    <DataGridTextColumn Header="Name" Width="*" Binding="{Binding name}"/>
+                    <DataGridTextColumn Header="Price" Width=".3*" Binding="{Binding price, StringFormat=C, ConverterCulture='en-US'}"/>
+                    <DataGridTextColumn Header="Count" Width=".3*" Binding="{Binding count}"/>
                 </DataGrid.Columns>
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseDoubleClick" Handler="back_BTN_Click"/>
+                    </Style>
+                </DataGrid.Resources>
             </DataGrid>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="1">
-                <Label Content="Total:"/>
-                <Label Content="0 $"/>
+                <Label Content="Total: "/>
+                <Label Content="$" Padding="0 5"/>
+                <Label Content="{Binding TotalPrice}" Padding="0 5"/>
             </StackPanel>
         </Grid>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="add_BTN" Content="--&gt;"/>
-            <Button x:Name="back_BTN" Content="&lt;--"/>
+            <Button x:Name="add_BTN" Content="--&gt;" Click="add_BTN_Click"/>
+            <Button x:Name="back_BTN" Content="&lt;--" Click="back_BTN_Click"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="order_BTN" Content="Order" Click="order_BTN_Click"/>
