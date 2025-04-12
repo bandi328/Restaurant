@@ -27,8 +27,8 @@
         <Label Content="Thank you for your order!" Grid.Row="0" FontSize="50"/>
         <Label Content="Sit tight, while we bring it to you!" Grid.Row="1" VerticalAlignment="Top"/>
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Grid.Row="2" Content="New Order"/>
-            <Button Grid.Row="2" Content="Close" Click="Button_Click"/>
+            <Button Grid.Row="2" x:Name="New_BTN" Content="New Order" Click="New_BTN_Click"/>
+            <Button Grid.Row="2" x:Name="Close_BTN" Content="Close" Click="Close_BTN_Click"/>
         </StackPanel>
     </Grid>
 </Page>
