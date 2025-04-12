@@ -38,7 +38,7 @@
                 <RowDefinition/>
                 <RowDefinition Height=".1*"/>
             </Grid.RowDefinitions>
-            <DataGrid Grid.Row="0" ItemsSource="{}">
+            <DataGrid Grid.Row="0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Width="*"/>
                     <DataGridTextColumn Header="Price" Width=".3*"/>

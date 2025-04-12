@@ -13,12 +13,12 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="6*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="Button">
-                <Setter Property="Margin" Value="5 0"/>
+                <Setter Property="Margin" Value="5"/>
                 <Setter Property="Padding" Value="20 5"/>
             </Style>
         </Grid.Resources>
@@ -28,9 +28,9 @@
                     <RowDefinition Height="4*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <ComboBox VerticalAlignment="Top" Margin="15"></ComboBox>
+                <ComboBox VerticalAlignment="Top" Margin="10" ItemsSource="{Binding Users}" DisplayMemberPath="name"></ComboBox>
                 <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Button x:Name="addUser_BTN" Content="Add new"/>
+                    <Button x:Name="addUser_BTN" Content="Add new" RenderTransformOrigin="0.489,0.52" Click="addUser_BTN_Click"/>
                     <Button x:Name="modify_BTN" Content="Edit"/>
                 </StackPanel>
             </Grid>
@@ -41,22 +41,21 @@
                     <RowDefinition Height="4*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <DataGrid Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding TeamsToShow}" SelectedItem="{Binding SelectedTeam}">
+                <DataGrid AutoGenerateColumns="False" VerticalAlignment="Top" Margin="10" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding CartToShow}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="" Width="*" Binding="{Binding TeamName}"/>
-                        <DataGridTextColumn Header="Csapvez. e-mail" Width="*" Binding="{Binding TeamLeaderEmail}"/>
-                        <DataGridTextColumn Header="Csapvez. szül. dátum" Width="*" Binding="{Binding TeamLeaderBirthDate}"/>
+                        <DataGridTextColumn Header="Items" Width="3*" Binding="{Binding name}"/>
+                        <DataGridTextColumn Header="Count" Width="*" Binding="{Binding price}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Button Content="Add new"/>
-                    <Button Content="Edit"/>
+                    <Label Content="Total:"/>
+                    <!--<Label Content="{Binding TotalPrice}"/>-->
                 </StackPanel>
             </Grid>
         </GroupBox>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="order_BTN" Content="Confirm"/>
-            <Button x:Name="clear_BTN" Content="Cancel"/>
+            <Button x:Name="clear_BTN" Content="Cancel" Click="clear_BTN_Click"/>
         </StackPanel>
     </Grid>
 </Page>

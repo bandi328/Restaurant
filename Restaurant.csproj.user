@@ -16,6 +16,9 @@
     <Compile Update="pages\OrderPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="windows\DataWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="pages\DonePage.xaml">
@@ -28,6 +31,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="pages\OrderPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="windows\DataWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

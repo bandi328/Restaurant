@@ -59,13 +59,13 @@ namespace Restaurant
 
         private void getMenuItems() {
             string json = File.ReadAllText("./src/menu.json");
-            MessageBox.Show(json);
+            //MessageBox.Show(json);
             MenuItems = JsonSerializer.Deserialize<ObservableCollection<classes.MenuItem>>(json);
         }
 
         private void order_BTN_Click(object sender, RoutedEventArgs e)
         {
-            ParentFrame.Navigate(new OrderPage() { ParentFrame = this.ParentFrame});
+            ParentFrame.Navigate(new OrderPage(Cart) { ParentFrame = this.ParentFrame});
         }
 
         private void clear_BTN_Click(object sender, RoutedEventArgs e)
