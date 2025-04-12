@@ -94,7 +94,7 @@ namespace Restaurant
                 users.Add(dataWindow.User);
                 UsersToShow.Add(dataWindow.User);
                 string jsonStr = JsonSerializer.Serialize(users);
-                File.WriteAllText("./src./users.json", jsonStr);
+                File.WriteAllText("./src/users.json", jsonStr);
             }
         }
 
@@ -130,7 +130,7 @@ namespace Restaurant
                 users[index] = dataWindow.User;
                 UsersToShow[index] = dataWindow.User;
                 string jsonStr = JsonSerializer.Serialize(users);
-                File.WriteAllText("./src./users.json", jsonStr);
+                File.WriteAllText("./src/users.json", jsonStr);
             }
         }
 
@@ -145,7 +145,7 @@ namespace Restaurant
             users.RemoveAt(index);
             UsersToShow.RemoveAt(index);
             string jsonStr = JsonSerializer.Serialize(users);
-            File.WriteAllText("./src./users.json", jsonStr);
+            File.WriteAllText("./src/users.json", jsonStr);
         }
     }
 }
