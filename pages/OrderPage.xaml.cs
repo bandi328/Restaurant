@@ -47,6 +47,10 @@ namespace Restaurant
             set { usersToShow = value; OnPropertyChanged(nameof(UsersToShow)); }
         }
 
+        // CURRENT USER
+        public User SelectedUser { get; set; }
+
+
         // onPChange
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
@@ -54,34 +58,52 @@ namespace Restaurant
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public OrderPage(ObservableCollection<classes.MenuItem> cart)
+        //TOTAL PRICE
+        private double totalPrice;
+        public double TotalPrice
+        {
+            get { return totalPrice; }
+            set { totalPrice = value; OnPropertyChanged(nameof(TotalPrice)); }
+        }
+
+        public OrderPage(ObservableCollection<classes.MenuItem> cart, double totalPrice)
         {
             InitializeComponent();
             this.DataContext = this;
             CartToShow = cart;
+            TotalPrice = totalPrice;
             getUsers();
         }
         private void getUsers()
         {
             string json = File.ReadAllText("./src/users.json");
-            MessageBox.Show(json);
             users = JsonSerializer.Deserialize<ObservableCollection<User>>(json);
             UsersToShow = JsonSerializer.Deserialize<ObservableCollection<User>>(json);
         }
-        private void clear_BTN_Click(object sender, RoutedEventArgs e)
+        private void cancel_BTN_Click(object sender, RoutedEventArgs e)
         {
-            ParentFrame.Navigate(new MainPage() { ParentFrame = this.ParentFrame });
+            if (NavigationService != null && NavigationService.CanGoBack) NavigationService.GoBack();
         }
 
         private void addUser_BTN_Click(object sender, RoutedEventArgs e)
         {
-            //DataWindow dataWindow = new DataWindow(new User(), Users);
-            //dataWindow.ShowDialog();
-            //if (dataWindow.DialogResult == true)
-            //{
-            //    Teams.Add(dataWindow.Team);
-            //    search_BTN_Click(sender, e);
-            //}
+            DataWindow dataWindow = new DataWindow(new User(), UsersToShow);
+            dataWindow.ShowDialog();
+            if (dataWindow.DialogResult == true)
+            {
+                users.Add(dataWindow.User);
+                UsersToShow.Add(dataWindow.User);
+            }
+        }
+
+        private void confirm_BTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedUser == null)
+            {
+                MessageBox.Show("Choose an user!", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            NavigationService.Navigate(new DonePage());
         }
     }
 }

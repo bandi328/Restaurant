@@ -20,7 +20,8 @@ namespace Restaurant
         public MainWindow()
         {
             InitializeComponent();
-            frame_FR.Navigate(new MainPage() { ParentFrame = frame_FR});
+            //NavigationService.Navigate(new MainPage());            
+            frame_FR.Navigate(new MainPage() { ParentFrame = frame_FR });
         }
     }
 }

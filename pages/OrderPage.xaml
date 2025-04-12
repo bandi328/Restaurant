@@ -28,7 +28,7 @@
                     <RowDefinition Height="4*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <ComboBox VerticalAlignment="Top" Margin="10" ItemsSource="{Binding Users}" DisplayMemberPath="name"></ComboBox>
+                <ComboBox VerticalAlignment="Top" Margin="10" ItemsSource="{Binding UsersToShow}" DisplayMemberPath="name" SelectedItem="{Binding SelectedUser}"></ComboBox>
                 <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Button x:Name="addUser_BTN" Content="Add new" RenderTransformOrigin="0.489,0.52" Click="addUser_BTN_Click"/>
                     <Button x:Name="modify_BTN" Content="Edit"/>
@@ -41,21 +41,22 @@
                     <RowDefinition Height="4*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <DataGrid AutoGenerateColumns="False" VerticalAlignment="Top" Margin="10" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding CartToShow}">
+                <DataGrid AutoGenerateColumns="False" RowHeaderWidth="0" CanUserReorderColumns="False" CanUserResizeColumns="False" VerticalAlignment="Top" Margin="10" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding CartToShow}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Items" Width="3*" Binding="{Binding name}"/>
                         <DataGridTextColumn Header="Count" Width="*" Binding="{Binding price}"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Label Content="Total:"/>
-                    <!--<Label Content="{Binding TotalPrice}"/>-->
+                <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <Label Content="Total: "/>
+                    <Label Content="$" Padding="0 5"/>
+                    <Label Content="{Binding TotalPrice}" Padding="0 5"/>
                 </StackPanel>
             </Grid>
         </GroupBox>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button x:Name="order_BTN" Content="Confirm"/>
-            <Button x:Name="clear_BTN" Content="Cancel" Click="clear_BTN_Click"/>
+            <Button x:Name="confirm_BTN" Content="Confirm" Click="confirm_BTN_Click"/>
+            <Button x:Name="cancel_BTN" Content="Cancel" Click="cancel_BTN_Click"/>
         </StackPanel>
     </Grid>
 </Page>

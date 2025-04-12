@@ -29,7 +29,7 @@ namespace Restaurant
 
         private void New_BTN_Click(object sender, RoutedEventArgs e)
         {
-            ParentFrame.Navigate(new MainPage());
+            NavigationService.Navigate(new MainPage());
         }
 
         private void Close_BTN_Click(object sender, RoutedEventArgs e)

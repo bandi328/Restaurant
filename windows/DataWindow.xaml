@@ -6,10 +6,8 @@
         xmlns:local="clr-namespace:Restaurant.windows"
         mc:Ignorable="d"
         Title="Enter user info" Height="450" Width="400">
-    <Grid>
+    <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -28,27 +26,21 @@
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
             </Style>
             <Style TargetType="Button">
-                <Setter Property="Padding" Value="15 3"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="Padding" Value="20 5"/>
             </Style>
         </Grid.Resources>
-        <Label Content="Csapatnév:" FontWeight="Bold"/>
-        <Label Content="Kategória:" Grid.Row="1" FontWeight="Bold"/>
-        <Label Content="Csapattagok száma:" Grid.Row="2" FontWeight="Bold"/>
-        <Label Content="Csapatvezető neve:" Grid.Row="3" FontWeight="Bold"/>
-        <Label Content="Csapvez. e-mail:" Grid.Row="4" FontWeight="Bold"/>
-        <!--<Label Content="Csapvez. szül. dátum:" Grid.Row="5"/>
-        <TextBox Grid.Column="1" Height="30" Text="{Binding Team.TeamName}" IsEnabled="{Binding IsEnabledTXB}" VerticalContentAlignment="Center"/>
-        <ComboBox Grid.Row="1" Grid.Column="1" Height="30" SelectedItem="{Binding Team.Category}" ItemsSource="{Binding Categories}"></ComboBox>
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <RadioButton Content="2" VerticalAlignment="Center" VerticalContentAlignment="Center" IsChecked="{Binding NumOfMembers[0]}" GroupName="MemberCountRadio"/>
-            <RadioButton Content="3" VerticalAlignment="Center" VerticalContentAlignment="Center" IsChecked="{Binding NumOfMembers[1]}" Margin="20 0 0 0" GroupName="MemberCountRadio"/>
-        </StackPanel>
-        <TextBox Grid.Row="3" Grid.Column="1" Height="30" Text="{Binding Team.TeamLeader}"/>
-        <TextBox Grid.Row="4" Grid.Column="1" Height="30" Text="{Binding Team.TeamLeaderEmail}"/>
-        <DatePicker Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" SelectedDate="{Binding SelectedDate}"/>
+        <Label Content="Name:" FontWeight="Bold"/>
+        <Label Content="E-mail address:" Grid.Row="1" FontWeight="Bold"/>
+        <Label Content="Phone number:" Grid.Row="2" FontWeight="Bold"/>
+        <Label Content="Address:" Grid.Row="3" FontWeight="Bold"/>
+        <TextBox Grid.Column="1" Height="30" Text="{Binding User.name}" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Height="30" Text="{Binding User.email}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Height="30" Text="{Binding User.phone}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Height="30" Text="{Binding User.address}"/>
         <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="Mentés" x:Name="save_BTN"/>
-            <Button Content="Mégsem" x:Name="cancel_BTN" Margin="20 0 0 0"/>
-        </StackPanel>-->
+            <Button Content="Save" x:Name="save_BTN" Click="save_BTN_Click"/>
+            <Button Content="Cancel" x:Name="cancel_BTN" Click="cancel_BTN_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

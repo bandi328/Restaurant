@@ -81,9 +81,12 @@ namespace Restaurant
 
         private void order_BTN_Click(object sender, RoutedEventArgs e)
         {
-            //TODO:
-            //Give "Cart" contents To Other window
-            ParentFrame.Navigate(new OrderPage(Cart) { ParentFrame = this.ParentFrame});
+            if (CartToShow.Count == 0)
+            {
+                MessageBox.Show("The cart is empty!", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            NavigationService.Navigate(new OrderPage(CartToShow, TotalPrice));            
         }
 
         private void clear_BTN_Click(object sender, RoutedEventArgs e)
@@ -112,7 +115,7 @@ namespace Restaurant
                     CartToShow.Add(SelectedItem);
                     Cart.Add(SelectedItem);
                 }
-                TotalPrice = Cart.Sum(x=>x.price*(int)x.count);
+                TotalPrice = Math.Round(Cart.Sum(x=>x.price*(int)x.count),2);
             }
         }
 
