@@ -33,6 +33,15 @@ namespace Restaurant
         }
         public Frame ParentFrame { get; set; }
 
+        private ObservableCollection<classes.MenuItem> cart;
+
+        public ObservableCollection<classes.MenuItem> Cart
+        {
+            get { return cart; }
+            set { cart = value; OnPropertyChanged(nameof(Cart)); }
+        }
+
+
 
         private ObservableCollection<classes.MenuItem> menuItems;
         public ObservableCollection<classes.MenuItem> MenuItems
