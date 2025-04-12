@@ -7,8 +7,28 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DonePage">
-
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="20 0"/>
+                <Setter Property="Padding" Value="20 10"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+        </Grid.Resources>
+        <Label Content="Thank you for your order!" Grid.Row="0" FontSize="50"/>
+        <Label Content="Sit tight, while we bring it to you!" Grid.Row="1" VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Grid.Row="2" Content="New Order"/>
+            <Button Grid.Row="2" Content="Close" Click="Button_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

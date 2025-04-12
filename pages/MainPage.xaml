@@ -27,25 +27,29 @@
         </Grid.Resources>
         <Label Content="Menu" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Content="Cart" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2"/>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding MenuItems}">
+        <DataGrid Grid.Row="1" ItemsSource="{Binding MenuItems}" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width="*"/>
-                <DataGridTextColumn Header="Price" Width=".3*"/>
+                <DataGridTextColumn Header="Name" Width="*" Binding="{Binding name}" />
+                <DataGridTextColumn Header="Price" Width=".3*" Binding="{Binding price}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2">
-            <DataGrid>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height=".1*"/>
+            </Grid.RowDefinitions>
+            <DataGrid Grid.Row="0" ItemsSource="{}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Width="*"/>
                     <DataGridTextColumn Header="Price" Width=".3*"/>
                     <DataGridTextColumn Header="Count" Width=".3*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="2">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="1">
                 <Label Content="Total:"/>
                 <Label Content="0 $"/>
             </StackPanel>
-        </StackPanel>
+        </Grid>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="add_BTN" Content="--&gt;"/>
             <Button x:Name="back_BTN" Content="&lt;--"/>
