@@ -102,10 +102,19 @@ namespace Restaurant
         {
             if (SelectedUser == null)
             {
-                MessageBox.Show("Choose an user!", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Choose a user!", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            saveOrder();
             NavigationService.Navigate(new DonePage());
+        }
+
+        private void saveOrder() {
+            string jsonStr = File.ReadAllText("./src/orders.json");
+            List<Order> prevorders = JsonSerializer.Deserialize<List<Order>>(File.ReadAllText("./src/orders.json"));
+            string newJsonStr = JsonSerializer.Serialize(new Order() { User_id = SelectedUser.id, Meals = new(CartToShow), Id = prevorders.Max(x=>x.Id)+1, Time = DateTime.Now});
+            string finalJsonStr = jsonStr.Remove(jsonStr.Length - 1) + "," + newJsonStr + "]";
+            File.WriteAllText("./src/orders.json", finalJsonStr);
         }
 
         private void modify_BTN_Click(object sender, RoutedEventArgs e)
@@ -147,5 +156,6 @@ namespace Restaurant
             string jsonStr = JsonSerializer.Serialize(users);
             File.WriteAllText("./src/users.json", jsonStr);
         }
+
     }
 }

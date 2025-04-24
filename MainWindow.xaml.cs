@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Restaurant.pages;
 
 namespace Restaurant
 {
@@ -21,7 +22,10 @@ namespace Restaurant
         {
             InitializeComponent();
             //NavigationService.Navigate(new MainPage());            
-            frame_FR.Navigate(new MainPage() { ParentFrame = frame_FR });
+            frame_FR.Navigate(new MainPage());
+
+            //unatkoztam szoval lett egy adminpage :D   -W
+            //frame_FR.Navigate(new AdminPage());
         }
     }
 }

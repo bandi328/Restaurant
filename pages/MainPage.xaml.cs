@@ -31,9 +31,6 @@ namespace Restaurant
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        //PARENT FRAME
-        public Frame ParentFrame { get; set; }
-
 
         //SELECTED ITEM
         public classes.MenuItem SelectedItem { get; set; }
