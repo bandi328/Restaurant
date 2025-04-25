@@ -14,14 +14,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.Resources>
-            <Style TargetType="Button">
-                <Setter Property="Margin" Value="20 0"/>
-                <Setter Property="Padding" Value="20 10"/>
-            </Style>
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="30"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Foreground" Value="White"/>
             </Style>
         </Grid.Resources>
         <Label Content="Thank you for your order!" Grid.Row="0" FontSize="50"/>

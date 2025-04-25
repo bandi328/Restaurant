@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:Restaurant"
         mc:Ignorable="d"
         Title="Restaurant" Height="450" Width="800" FontSize="14">
+    <Window.Background>
+        <ImageBrush ImageSource="images\bg.jpg"/>
+    </Window.Background>
     <Grid Margin="10">
         <Frame x:Name="frame_FR" NavigationUIVisibility="Hidden"></Frame>
     </Grid>

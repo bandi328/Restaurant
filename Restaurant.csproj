@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\bg.jpg" />
+    <None Remove="images\btn.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="classes\Order.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
@@ -24,6 +29,11 @@
     <None Update="src\users.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\bg.jpg" />
+    <Resource Include="images\btn.png" />
   </ItemGroup>
 
 </Project>

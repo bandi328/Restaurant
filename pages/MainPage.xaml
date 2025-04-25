@@ -19,12 +19,13 @@
             <RowDefinition/>
             <RowDefinition Height=".2*"/>
         </Grid.RowDefinitions>
-        <Grid.Resources>
+        <!--<Grid.Resources>
             <Style TargetType="Button">
                 <Setter Property="Margin" Value="5"/>
                 <Setter Property="Padding" Value="20 5"/>
+                <Setter Property="BorderThickness" Value="0"/>
             </Style>
-        </Grid.Resources>
+        </Grid.Resources>-->
         <Label Content="Menu" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Content="Cart" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2"/>
         <DataGrid Grid.Row="1" VerticalAlignment="Top" Padding="0" x:Name="menu_DG" RowHeaderWidth="0" ItemsSource="{Binding MenuItems}" IsReadOnly="True" SelectedItem="{Binding SelectedItem}" AutoGenerateColumns="False"  SelectionMode="Single">
@@ -40,8 +41,8 @@
         </DataGrid>
         <Grid Grid.Row="1" Grid.Column="2">
             <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
                 <RowDefinition/>
-                <RowDefinition Height=".1*"/>
             </Grid.RowDefinitions>
             <DataGrid Grid.Row="0" VerticalAlignment="Top" IsReadOnly="True" AutoGenerateColumns="False" RowHeaderWidth="0" SelectedItem="{Binding SelectedCartItem}" CanUserReorderColumns="False" CanUserResizeColumns="False" SelectionMode="Single" ItemsSource="{Binding CartToShow}">
                 <DataGrid.Columns>
@@ -55,10 +56,10 @@
                     </Style>
                 </DataGrid.Resources>
             </DataGrid>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="1">
-                <Label Content="Total: "/>
-                <Label Content="$" Padding="0 5"/>
-                <Label Content="{Binding TotalPrice}" Padding="0 5"/>
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Label Content="Total: " FontSize="16" FontWeight="Bold"/>
+                <Label Content="$" Padding="0 5" FontSize="16" FontWeight="Bold"/>
+                <Label Content="{Binding TotalPrice}" Padding="0 5" FontSize="16" FontWeight="Bold"/>
             </StackPanel>
         </Grid>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">

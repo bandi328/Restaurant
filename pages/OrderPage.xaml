@@ -13,50 +13,139 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="6*"/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.Resources>
-            <Style TargetType="Button">
-                <Setter Property="Margin" Value="5"/>
-                <Setter Property="Padding" Value="20 5"/>
-            </Style>
-        </Grid.Resources>
-        <GroupBox Header="User info" Margin="5">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <ComboBox VerticalAlignment="Top" Margin="10" ItemsSource="{Binding UsersToShow}" DisplayMemberPath="name" SelectedItem="{Binding SelectedUser}"></ComboBox>
-                <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Button x:Name="addUser_BTN" Content="Add new" RenderTransformOrigin="0.489,0.52" Click="addUser_BTN_Click"/>
-                    <Button x:Name="modify_BTN" Content="Edit" Click="modify_BTN_Click"/>
-                    <Button x:Name="deleteUser_BTN" Content="Delete" Click="deleteUser_BTN_Click"/>
-                </StackPanel>
-            </Grid>
-        </GroupBox>
-        <GroupBox Header="Cart" Grid.Column="1" Margin="5">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <DataGrid AutoGenerateColumns="False" RowHeaderWidth="0" CanUserReorderColumns="False" CanUserResizeColumns="False" VerticalAlignment="Top" Margin="10" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding CartToShow}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Items" Width="3*" Binding="{Binding name}"/>
-                        <DataGridTextColumn Header="Price" Width="*" Binding="{Binding price}"/>
-                        <DataGridTextColumn Header="Count" Width="*" Binding="{Binding count}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
-                    <Label Content="Total: "/>
-                    <Label Content="$" Padding="0 5"/>
-                    <Label Content="{Binding TotalPrice}" Padding="0 5"/>
-                </StackPanel>
-            </Grid>
-        </GroupBox>
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Label Content="User info" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--<ComboBox VerticalAlignment="Top" ItemsSource="{Binding UsersToShow}" DisplayMemberPath="name" SelectedItem="{Binding SelectedUser}" Foreground="Black" IsReadOnly="True">
+            </ComboBox>-->
+            
+            <ComboBox VerticalAlignment="Top"
+          ItemsSource="{Binding UsersToShow}"
+          DisplayMemberPath="name"
+          SelectedItem="{Binding SelectedUser}"
+          Foreground="White"
+          IsReadOnly="True"
+          >
+                <ComboBox.Template>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton Name="ToggleButton"
+                                  Grid.Column="2"
+                                  Focusable="false"
+                                  IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                  ClickMode="Press"
+                                  BorderThickness="1"
+                                  BorderBrush="DarkGray">
+                                <ToggleButton.Style>
+                                    <Style TargetType="ToggleButton">
+                                        <Setter Property="Background" Value="SaddleBrown"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ToggleButton">
+                                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                        <Path HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z" Fill="White"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ToggleButton.Style>
+                            </ToggleButton>
+
+
+                            <ContentPresenter Name="ContentSite"
+                                  IsHitTestVisible="False"
+                                  Content="{TemplateBinding SelectionBoxItem}"
+                                  ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                  ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                  Margin="6,2,25,2"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Left"/>
+
+                            <Popup
+                                Name="Popup"
+                                Placement="Bottom"
+                                IsOpen="{TemplateBinding IsDropDownOpen}"
+                                AllowsTransparency="True"
+                                Focusable="False"
+                                PopupAnimation="Slide">
+                            <Grid
+                                Name="DropDown"
+                                SnapsToDevicePixels="True"
+                                MinWidth="{TemplateBinding ActualWidth}"
+                                MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border Background="#A0522D"
+                                BorderThickness="1"
+                                BorderBrush="Gray"/>
+                                <ScrollViewer SnapsToDevicePixels="True">
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </ComboBox.Template>
+                <ComboBox.ItemContainerStyle>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Background" Value="#88A0522D"/>
+                        <Setter Property="Foreground" Value="white"/>
+                        <Setter Property="Margin" Value="4"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ComboBoxItem">
+                                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True">
+                                        <ContentPresenter />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsKeyboardFocused" Value="True">
+                                            <Setter Property="Foreground" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ComboBox.ItemContainerStyle>
+
+
+            </ComboBox>
+
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button x:Name="addUser_BTN" Content="Add new" RenderTransformOrigin="0.489,0.52" Click="addUser_BTN_Click"/>
+                <Button x:Name="modify_BTN" Content="Edit" Click="modify_BTN_Click"/>
+                <Button x:Name="deleteUser_BTN" Content="Delete" Click="deleteUser_BTN_Click"/>
+            </StackPanel>
+        </Grid>
+        <Label Grid.Column="1" Content="Cart" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <DataGrid AutoGenerateColumns="False" RowHeaderWidth="0" CanUserReorderColumns="False" CanUserResizeColumns="False" VerticalAlignment="Top" Margin="10" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding CartToShow}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Items" Width="3*" Binding="{Binding name}"/>
+                    <DataGridTextColumn Header="Price" Width="*" Binding="{Binding price}"/>
+                    <DataGridTextColumn Header="Count" Width="*" Binding="{Binding count}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Label Content="Total: " FontSize="16" FontWeight="Bold"/>
+                <Label Content="$" Padding="0 5" FontSize="16" FontWeight="Bold"/>
+                <Label Content="{Binding TotalPrice}" Padding="0 5" FontSize="16" FontWeight="Bold"/>
+            </StackPanel>
+        </Grid>
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="confirm_BTN" Content="Confirm" Click="confirm_BTN_Click"/>
             <Button x:Name="cancel_BTN" Content="Cancel" Click="cancel_BTN_Click"/>
         </StackPanel>
