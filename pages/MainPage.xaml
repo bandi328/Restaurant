@@ -69,6 +69,7 @@
         <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="order_BTN" Content="Order" Click="order_BTN_Click"/>
             <Button x:Name="clear_BTN" Content="Clear" Click="clear_BTN_Click"/>
+            <Button x:Name="close_BTN" Content="Close" Click="close_BTN_Click"/>
         </StackPanel>
     </Grid>
 </Page>

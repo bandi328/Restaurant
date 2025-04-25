@@ -140,5 +140,10 @@ namespace Restaurant
                 TotalPrice = Cart.Sum(x => x.price * (int)x.count);
             }
         }
+
+        private void close_BTN_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.MainWindow.Close();
+        }
     }
 }

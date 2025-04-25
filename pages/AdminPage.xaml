@@ -19,14 +19,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Content="Orders" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Grid.ColumnSpan="2"/>
-        <DataGrid Grid.Row="1"  AutoGenerateColumns="False" RowHeaderWidth="0" CanUserReorderColumns="False" CanUserResizeColumns="False" Margin="10" SelectedItem="{Binding SelectedOrder}" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding OrdersToShow}">
+        <DataGrid Grid.Row="1"  AutoGenerateColumns="False" VerticalAlignment="Top" RowHeaderWidth="0" CanUserReorderColumns="False" CanUserResizeColumns="False" Margin="10" SelectedItem="{Binding SelectedOrder}" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding OrdersToShow}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Order ID" Width="*" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="User ID" Width="*" Binding="{Binding User_id}"/>
                 <DataGridTextColumn Header="Time" Width="2*" Binding="{Binding Time}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid AutoGenerateColumns="False" RowHeaderWidth="0" Grid.Column="1" Grid.Row="1" CanUserReorderColumns="False" CanUserResizeColumns="False" Margin="10" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding Meals}">
+        <DataGrid AutoGenerateColumns="False" VerticalAlignment="Top" RowHeaderWidth="0" Grid.Column="1" Grid.Row="1" CanUserReorderColumns="False" CanUserResizeColumns="False" Margin="10" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding Meals}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="*" Binding="{Binding id}"/>
                 <DataGridTextColumn Header="Item" Width="3*" Binding="{Binding name}"/>
