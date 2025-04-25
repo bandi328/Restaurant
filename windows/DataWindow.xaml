@@ -6,6 +6,121 @@
         xmlns:local="clr-namespace:Restaurant.windows"
         mc:Ignorable="d"
         Title="Enter user info" Height="450" Width="400">
+    <Window.Background>
+        <ImageBrush ImageSource="..\images\bg.jpg"/>
+    </Window.Background>
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <!--<Setter Property="Background" Value="#B2924D2B"/>-->
+            <!--<Setter Property="BorderBrush" Value="#FF6B432F"/>-->
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Padding" Value="30 0 25 0"/>
+            <Setter Property="Margin" Value="15 0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="..\images\txb.png" Stretch="Fill"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="20 10"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="..\images\btn.png" Stretch="Fill"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="63"/>
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center"
+                                      RecognizesAccessKey="True"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Height" Value="Auto"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="#55A0522D"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#88A0522D"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#88A0522D"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="#88A0522D"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="RowBackground" Value="#55A0522D"/>
+            <Setter Property="AlternatingRowBackground" Value="#33A0522D"/>
+            <Setter Property="ColumnHeaderStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="#88A0522D"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Padding" Value="8,4"/>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="#55A0522D"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#AAA0522D"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="DataGridCell">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="#AAA0522D"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+    </Window.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -18,26 +133,14 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid.Resources>
-            <Style TargetType="Label">
-                <Setter Property="VerticalAlignment" Value="Center"/>
-            </Style>
-            <Style TargetType="TextBox">
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-            </Style>
-            <Style TargetType="Button">
-                <Setter Property="Margin" Value="5"/>
-                <Setter Property="Padding" Value="20 5"/>
-            </Style>
-        </Grid.Resources>
         <Label Content="Name:" FontWeight="Bold"/>
         <Label Content="E-mail address:" Grid.Row="1" FontWeight="Bold"/>
         <Label Content="Phone number:" Grid.Row="2" FontWeight="Bold"/>
         <Label Content="Address:" Grid.Row="3" FontWeight="Bold"/>
-        <TextBox Grid.Column="1" Height="30" Text="{Binding User.name}" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Height="30" Text="{Binding User.email}"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Height="30" Text="{Binding User.phone}"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Height="30" Text="{Binding User.address}"/>
+        <TextBox Grid.Column="1" Text="{Binding User.name}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding User.email}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding User.phone}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding User.address}"/>
         <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Content="Save" x:Name="save_BTN" Click="save_BTN_Click"/>
             <Button Content="Cancel" x:Name="cancel_BTN" Click="cancel_BTN_Click"/>

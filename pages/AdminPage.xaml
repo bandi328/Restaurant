@@ -33,6 +33,6 @@
                 <DataGridTextColumn Header="Count" Width="*" Binding="{Binding count}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Delete selected" x:Name="Delete_BTN" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20 10" Grid.ColumnSpan="2" Click="Delete_BTN_Click"/>
+        <Button Content="Delete selected" x:Name="Delete_BTN" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="110" Padding="20 10" Grid.ColumnSpan="2" Click="Delete_BTN_Click"/>
     </Grid>
 </Page>

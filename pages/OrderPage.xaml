@@ -31,7 +31,7 @@
           DisplayMemberPath="name"
           SelectedItem="{Binding SelectedUser}"
           Foreground="White"
-          IsReadOnly="True"
+          IsReadOnly="True" Background="#AAA0522D"
           >
                 <ComboBox.Template>
                     <ControlTemplate TargetType="ComboBox">
@@ -45,7 +45,7 @@
                                   BorderBrush="DarkGray">
                                 <ToggleButton.Style>
                                     <Style TargetType="ToggleButton">
-                                        <Setter Property="Background" Value="SaddleBrown"/>
+                                        <Setter Property="Background" Value="#924d2b"/>
                                             <Setter Property="Foreground" Value="White"/>
                                         <Setter Property="Template">
                                             <Setter.Value>
@@ -82,7 +82,7 @@
                                 SnapsToDevicePixels="True"
                                 MinWidth="{TemplateBinding ActualWidth}"
                                 MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                    <Border Background="#A0522D"
+                                    <Border Background="#88A0522D"
                                 BorderThickness="1"
                                 BorderBrush="Gray"/>
                                 <ScrollViewer SnapsToDevicePixels="True">
@@ -108,7 +108,7 @@
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsKeyboardFocused" Value="True">
-                                            <Setter Property="Foreground" Value="Black"/>
+                                            <Setter Property="Foreground" Value="orange"/>
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>

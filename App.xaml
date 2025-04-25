@@ -38,8 +38,6 @@
 
 
         <Style TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
-            <Setter Property="Background" Value="#A0522D"/>
-            <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Padding" Value="10,5"/>
             <Setter Property="Height" Value="Auto"/>
@@ -49,14 +47,14 @@
         </Style>
 
         <Style TargetType="ComboBoxItem">
-            <Setter Property="Background" Value="#A0522D"/>
+            <Setter Property="Background" Value="#55A0522D"/>
             <Setter Property="Foreground" Value="White"/>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#C07040"/>
+                    <Setter Property="Background" Value="#88A0522D"/>
                 </Trigger>
                 <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="#B06030"/>
+                    <Setter Property="Background" Value="#88A0522D"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
